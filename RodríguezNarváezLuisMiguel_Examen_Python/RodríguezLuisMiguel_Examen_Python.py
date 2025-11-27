@@ -43,7 +43,7 @@ def numImpares():
         'Para hacerlo de este modo se tiene que multiplicar por dos'
         'el número de columnas porque sólo la mitad de las veces se'
         'va a cumplir la condición del if, por lo tanto, el salto de'
-        'línea sucedía dos iteraciones antes de lo previsto'
+        'línea sucedía tras la mitad de los prints esperados'
         for j in range(columnas * 2): 
             if numero % 2 != 0:
                 print(numero, end=" ")
