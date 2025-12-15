@@ -1,5 +1,5 @@
 class Persona:
-    def _init_(self,nombre,direccion,telefono):
+    def __init__(self,nombre,direccion,telefono):
         if not nombre:
             raise ValueError("El nombre no puede estar vacío")
 
@@ -22,6 +22,36 @@ class Persona:
 
 contactos = {}
 
+def pedir_nombre():
+    while True:
+        nombre = input("Nombre: ")
+        try:
+            if not nombre.strip():
+                raise ValueError
+            return nombre
+        except ValueError:
+            print("El nombre no puede estar vacío")
+
+
+def pedir_telefono():
+    while True:
+        telefono = input("Teléfono: ")
+        try:
+            if not telefono.isdigit() or len(telefono) != 9:
+                raise ValueError
+            return telefono
+        except ValueError:
+            print("El teléfono debe tener 9 dígitos")
+
+
+def crear_persona():
+    nombre = pedir_nombre()
+    direccion = input("Dirección: ")
+    telefono = pedir_telefono()
+    return Persona(nombre, direccion, telefono)
+
+    
+
 def mostrarOrdenAlfabetico():
     ordenado = {clave : contactos[clave] for clave in sorted(contactos.keys())}
 
@@ -31,14 +61,11 @@ def mostrarOrdenAlfabetico():
         print(f"{clave}:\n  Nombre: {contacto.getNombre()}\n  Dirección: {contacto.getDireccion()}\n  Teléfono: {contacto.getTelefono()}\n")
 
 def anyadirContacto():
-    nombre = input("Indique el nombre:")
-    direccion = input("Indique la direccion:")
-    telefono = input("Indique el telefono:")
 
-    contacto = Persona(nombre,direccion,telefono)
+    contacto = crear_persona()
     
-    if nombre.upper() not in contactos or input("El contacto ya existe, desea actualizarlo con el teléfono indicado?") == "si":
-        contactos[nombre.upper()] = contacto
+    if contacto.getNombre().upper() not in contactos or input("El contacto ya existe, desea actualizarlo con el teléfono indicado?") == "si":
+        contactos[contacto.getNombre().upper()] = contacto
         print("Se ha actualizado la lista de contactos")
     else:
         print("No se ha actualizado la lista de contactos")
@@ -47,8 +74,8 @@ def modificarContacto():
     nombre = input("Indique el nombre del contacto:")
 
     if nombre.upper() in contactos or input("El contacto no existe, ¿desea insertarlo?") == "si":
-        direccion = input("Indique la dirección:")
-        telefono = input("Indique el teléfono:")
+        direccion = input("Dirección: ")
+        telefono = pedir_telefono()
         contactos[nombre.upper()] = Persona(nombre,direccion,telefono)
         print("Se modificó la lista de contactos")
     else:
@@ -75,8 +102,44 @@ def eliminarContacto():
     except KeyError:
         print("El contacto no se ha encontrado")
 
+#Menú de opciones
+flag = False
+while not flag:
+    print("Escoja una opción:\n"\
+    "a) Listado de contactos por orden alfabético\n" \
+    "b) Añadir un nuevo contacto\n" \
+    "c) Modificar un contacto\n" \
+    "d) Buscar un número de teléfono\n" \
+    "e) Eliminar un contacto\n" \
+    "f) Salir")
+    print("")
 
-    
+
+    opcion = input("Indique una opción: a,b,c,d,e. escriba f para salir:")
+    match opcion.lower():
+            case 'a':
+                mostrarOrdenAlfabetico()
+                print("")
+            case 'b':
+                anyadirContacto()
+                print("")
+            case 'c':
+                modificarContacto()
+                print("")
+            case 'd':
+                buscarTelefono()
+                print("")
+            case 'e':
+                eliminarContacto()
+                print("")
+            case 'f':
+                print("Fin del programa")
+                flag = True
+            case _:
+                print('No ha indicado ninguna de las opciones, ' \
+                'inténtelo de nuevo: ')
+                print("")
+
 
     
 
