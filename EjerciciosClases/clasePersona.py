@@ -64,7 +64,7 @@ def anyadirContacto():
 
     contacto = crear_persona()
     
-    if contacto.getNombre().upper() not in contactos or input("El contacto ya existe, desea actualizarlo con el teléfono indicado?") == "si":
+    if contacto.getNombre().upper() not in contactos or input("El contacto ya existe, desea actualizarlo con el teléfono indicado?").strip().lower() in ("si", "sí"):
         contactos[contacto.getNombre().upper()] = contacto
         print("Se ha actualizado la lista de contactos")
     else:
@@ -73,7 +73,7 @@ def anyadirContacto():
 def modificarContacto():
     nombre = input("Indique el nombre del contacto:")
 
-    if nombre.upper() in contactos or input("El contacto no existe, ¿desea insertarlo?") == "si":
+    if nombre.upper() in contactos or input("El contacto no existe, ¿desea insertarlo?").strip().lower() in ("si", "sí"):
         direccion = input("Dirección: ")
         telefono = pedir_telefono()
         contactos[nombre.upper()] = Persona(nombre,direccion,telefono)
