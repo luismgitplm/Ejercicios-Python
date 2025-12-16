@@ -206,8 +206,9 @@ def mostrarEstadisticas():
             totalPaginas += material.getNumPaginas()
         else:
             numeroRevistas += 1
-    
-    promedioPaginas = totalPaginas / numeroLibros
+            
+    if numeroLibros > 0:
+        promedioPaginas = totalPaginas / numeroLibros
 
     print("Las estadísticas totales: \n")
     print(f"Total de materiales: {numeroLibros + numeroRevistas}\n")
