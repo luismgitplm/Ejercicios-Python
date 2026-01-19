@@ -2,6 +2,7 @@ from django.shortcuts import render
 from HolaMundo.models import Author
 from HolaMundo.models import Book
 from django.http import HttpResponse
+from HolaMundo.forms import AutorForm
 
 
 # Create your views here.
@@ -19,4 +20,7 @@ def author (request):
 def book (request):
     book = Book.objects.all()
     return render(request, 'book.html',{'books': book})
+
+def crearAutor (request):
+    return render(request, 'crearAutor.html',{'autor_form': AutorForm})
     

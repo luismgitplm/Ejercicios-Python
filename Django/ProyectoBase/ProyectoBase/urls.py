@@ -23,5 +23,6 @@ urlpatterns = [
     path('hola/', views.hola_mundo),
     path('home/', views.home),
     path('author/', views.author),
-    path('book/', views.book)
+    path('book/', views.book),
+    path('crearAutor/', views.crearAutor)
 ]
