@@ -4,6 +4,7 @@ from HolaMundo.models import Author
 from HolaMundo.models import Book
 from django.http import HttpResponse
 from HolaMundo.forms import AutorForm
+from HolaMundo.forms import BookForm
 
 
 # Create your views here.
@@ -61,7 +62,21 @@ def eliminarAutor (request, pk=None):
     #autor=Author.objects.get(pk=pk)
     #autor.delete()
     return redirect ('/author/')
-    
+
+def crearLibro(request):
+    if request.method == 'GET':
+        return render(request, 'crearLibro.html', {'book_form': BookForm})
+    if request.method == 'POST':
+         book_form=BookForm(data=request.POST) #data es lo que le enviamos para que inserte
+    if book_form.is_valid():
+        new_book=Book.objects.create(title=book_form.cleaned_data.get('title'),
+        cod=book_form.cleaned_data.get('cod'))
+        
+        new_book.author.set(book_form.cleaned_data.get('author'))
+        return redirect('/book/')
+    else:
+        return render(request, 'crearLibro.html',{'book_form':book_form}) 
+            
 
     
     
