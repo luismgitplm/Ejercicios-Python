@@ -16,7 +16,9 @@
         <li>
             {{ aut }} 
             <a href="/editarAutor/{{aut.id}}">Editar</a>
-            <a href="/eliminarAutor/{{aut.id}}">Eliminar</a>
+            <a href="/eliminarAutor/{{aut.id}}"
+                onclick="return confirm('¿Estás seguro?');">
+                Eliminar</a>
         </li>
          <!-- Lo que contiene la variable autor
         es una lista -->
