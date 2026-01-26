@@ -24,5 +24,7 @@ urlpatterns = [
     path('home/', views.home),
     path('author/', views.author),
     path('book/', views.book),
-    path('crearAutor/', views.crearAutor)
+    path('crearAutor/', views.crearAutor),
+    path ('editarAutor/<int:pk>',views.editarAutor),
+    path ('eliminarAutor/<int:pk>',views.eliminarAutor)
 ]

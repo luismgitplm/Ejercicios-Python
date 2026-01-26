@@ -5,6 +5,10 @@
 {%endblock%}
 
 {%block content%}
-    {{autor_form}}
+    <form action="" method="post">
+        {%csrf_token%}
+        {{autor_form}}
+        <button type="submit">Guardar</button>
+    </form>
 {%endblock%}
 

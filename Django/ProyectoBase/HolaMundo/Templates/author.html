@@ -13,11 +13,16 @@
     <h1>Listado de autores</h1>
     <ul>
         {% for aut in authors %}
-        <li>{{ aut }}</li>
-        <li>{{ aut.name}}</li> <!-- Lo que contiene la variable autor
+        <li>
+            {{ aut }} 
+            <a href="/editarAutor/{{aut.id}}">Editar</a>
+            <a href="/eliminarAutor/{{aut.id}}">Eliminar</a>
+        </li>
+         <!-- Lo que contiene la variable autor
         es una lista -->
         {% endfor %}
     </ul>
+    <div><a href="/crearAutor/">Registrar nuevo autor</a></div>
     {%endblock%}
 </body>
 </html>
