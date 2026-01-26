@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {%block title%}
-    <title>Libros y autores</title>
-    {%endblock title%}
+    <title>
+        {%block title%}
+            Libros y autores
+        {%endblock%}
+    </title>
+    
 </head>
 <body>
     {%block header%}
         <nav class="navbar navbar-light bg-primary-subtle text-center d-flex justify-content-center">
-            <span class="navbar-brand mb-0 h1"><a href="/author/">Autores</a>  <a href="/book/">Libros</a></span>
+            <span class="navbar-brand mb-0 h1">
+                <a href="/author/">Autores</a>  
+                <a href="/book/">Libros</a>
+                <a href="/home/">Índice</a>
+            </span>
         </nav>
-    {%endblock header%}
+    {%endblock%}
+    <div class="container mt-4">
     {%block content%}
     <h1>Index html / Luis Miguel Rodríguez Narváez</h1>
-    {%endblock content%}
+    {%endblock%}
+    </div>
     <!--Muestro en forma de lista cada elemento de authors (variable salida de una consulta a una tabla)-->
     <a href="/crearAutor/">...</a>
     
